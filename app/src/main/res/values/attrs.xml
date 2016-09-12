@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GridLayoutAttrs">
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+        <attr name="numColumns" format="integer" />
+        <attr name="numRows" format="integer" />
+        <attr name="scroll" format="boolean"/>
+    </declare-styleable>
+</resources>
