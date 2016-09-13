@@ -8,8 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
+        android:paddingTop="20dp"
         app:horizontalSpacing="10dp"
-        app:numRows="5"
+        app:numRows="4"
         app:verticalSpacing="10dp">
 
         <TextView
@@ -29,12 +30,12 @@
             android:background="#0F0"
             android:text="3" />
         <TextView
-            android:layout_width="10dp"
+            android:layout_width="20dp"
             android:layout_height="30dp"
             android:background="#0F0"
             android:text="4" />
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
             android:background="#0F0"
             android:text="5" />
@@ -45,6 +46,11 @@
             android:text="6" />
         <TextView
             android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0F0"
+            android:text="7" />
+        <TextView
+            android:layout_width="30dp"
             android:layout_height="50dp"
             android:background="#0F0"
             android:text="7" />

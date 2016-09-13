@@ -129,21 +129,21 @@ public class GridLayout extends ViewGroup {
         }
 
         if (isRow) {
-            for (int i = 0; i < mNumRows; i++) {
-                for (int j = 0; j < mNumColumns; j++) {
-                    final View child = getChildAt(i * mNumColumns + j);
+            for (int i = 0; i < mNumColumns; i++) {
+                for (int j = 0; j < mNumRows; j++) {
+                    final View child = getChildAt(i * mNumRows + j);
                     if (child != null) {
                         if (child.getVisibility() != GONE) {
                             final LayoutParams lp = child.getLayoutParams();
                             final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
                             final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
                             child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-                            maxChildWidth += child.getMeasuredWidth();
+                            maxChildWidth = Math.max(maxChildWidth, child.getMeasuredWidth());
                         }
                     }
                 }
-                maxWidth = Math.max(maxWidth, maxChildWidth);
-                maxChildWidth=0;
+                maxWidth += maxChildWidth;
+                maxChildWidth = 0;
             }
 
         }
@@ -194,7 +194,8 @@ public class GridLayout extends ViewGroup {
 //        final int childWidth = (getMeasuredWidth() - paddingLeft - paddingRight - horizontalSpacing * (numColumns - 1)) / numColumns;
 //        final int childHeight = (getMeasuredHeight() - paddingTop - paddingBottom - verticalSpacing * (numRows - 1)) / numRows;
         int maxChildHeight = 0;
-        int childWidth = 0;
+        int maxChildWidth = 0;
+        int childWidth = paddingLeft;
         int childHeight = paddingTop;
 
         if (isColumn || isBoth) {
@@ -217,24 +218,23 @@ public class GridLayout extends ViewGroup {
         }
 
         if (isRow) {
-            childWidth = paddingLeft;
             childHeight = (getMeasuredHeight() - paddingTop - paddingBottom - verticalSpacing * (numRows - 1)) / numRows;
-            for (int i = 0; i < mNumRows; i++) {
-                for (int j = 0; j < mNumColumns; j++) {
-                    final View child = getChildAt(i * mNumColumns + j);
+            for (int i = 0; i < mNumColumns; i++) {
+                for (int j = 0; j < mNumRows; j++) {
+                    final View child = getChildAt(i * mNumRows + j);
                     if (child != null) {
                         if (child.getVisibility() != View.GONE) {
-                            if (i == 0) {
-                                int p=child.getMeasuredWidth();
-                                child.layout(childWidth, childHeight * i, childWidth + child.getMeasuredWidth(), childHeight * i + childHeight);
+                            if (j == 0) {
+                                child.layout(childWidth, paddingTop, childWidth + child.getMeasuredWidth(), paddingTop + childHeight);
                             } else {
-                                child.layout(childWidth, (childHeight + verticalSpacing) * i, childWidth + child.getMeasuredWidth(), (childHeight + verticalSpacing) * i + childHeight);
+                                child.layout(childWidth, paddingTop + (childHeight + verticalSpacing) * j, childWidth + child.getMeasuredWidth(), paddingTop + (childHeight + verticalSpacing) * j + childHeight);
                             }
-                            childWidth += (child.getMeasuredWidth() + horizontalSpacing);
+                            maxChildWidth = Math.max(maxChildWidth, child.getMeasuredWidth());
                         }
                     }
                 }
-                childWidth = paddingLeft;
+                childWidth += (maxChildWidth + mHorizontalSpacing);
+                maxChildWidth = 0;
             }
         }
 
