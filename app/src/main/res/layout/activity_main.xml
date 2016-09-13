@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         app:horizontalSpacing="10dp"
-        app:numRows="7"
+        app:numRows="5"
         app:verticalSpacing="10dp">
 
         <TextView

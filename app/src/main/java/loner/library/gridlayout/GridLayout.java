@@ -143,6 +143,7 @@ public class GridLayout extends ViewGroup {
                     }
                 }
                 maxWidth = Math.max(maxWidth, maxChildWidth);
+                maxChildWidth=0;
             }
 
         }
