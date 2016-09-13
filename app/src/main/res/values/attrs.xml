@@ -5,6 +5,5 @@
         <attr name="verticalSpacing" format="dimension" />
         <attr name="numColumns" format="integer" />
         <attr name="numRows" format="integer" />
-        <attr name="scroll" format="boolean"/>
     </declare-styleable>
 </resources>

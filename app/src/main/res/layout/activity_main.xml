@@ -7,18 +7,47 @@
     <loner.library.gridlayout.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
         app:horizontalSpacing="10dp"
-        app:numColumns="4"
-        app:scroll="true"
-        app:verticalSpacing="20dp">
-
+        app:numRows="7"
+        app:verticalSpacing="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="#0F0"
+            android:text="1" />
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#0F0"
+            android:text="2" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:background="#0F0"
+            android:text="3" />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="30dp"
             android:background="#0F0"
             android:text="4" />
-
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0F0"
+            android:text="5" />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0F0"
+            android:text="6" />
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#0F0"
+            android:text="7" />
 
     </loner.library.gridlayout.GridLayout>
 </RelativeLayout>
